@@ -1366,6 +1366,453 @@ a{color:var(--gold);text-decoration:none;}
 .reveal-d4{transition-delay:.32s;}
 
 /* ═══════════════════════════════════════════
+   SELETOR DE PROPOSTAS (logo após hero)
+   ═══════════════════════════════════════════ */
+.options-bar{
+  background:linear-gradient(160deg,var(--bg2),var(--bg3));
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  padding:32px 36px;
+  margin-top:50px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.options-bar::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.options-bar .options-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.92rem;
+  letter-spacing:.22em;
+  color:var(--gold);
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:12px;
+}
+.options-bar h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.6rem,3vw,2rem);
+  color:var(--white);
+  letter-spacing:.04em;
+  line-height:1.2;
+  margin-bottom:14px;
+}
+.options-bar p{
+  font-size:1.02rem;
+  color:var(--gray-lt);
+  max-width:680px;
+  margin:0 auto 24px;
+  line-height:1.7;
+}
+.options-buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.options-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 26px;
+  border-radius:50px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.95rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:var(--transition);
+  border:1px solid var(--line3);
+}
+.options-btn.primary{
+  background:var(--gold);
+  color:#000;
+  box-shadow:var(--shadow-gold);
+}
+.options-btn.primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(201,168,76,.5);}
+.options-btn.secondary{
+  background:transparent;
+  color:var(--gold);
+  border:1px solid var(--line3);
+}
+.options-btn.secondary:hover{
+  background:var(--gold-soft);
+  transform:translateY(-3px);
+}
+.options-btn svg{width:16px;height:16px;}
+
+/* ═══════════════════════════════════════════
+   PROPOSTA HEADER (etiqueta antes de cada proposta)
+   ═══════════════════════════════════════════ */
+.proposal-marker{
+  text-align:center;
+  margin:30px 0 0;
+  padding:0 24px;
+}
+.proposal-marker-inner{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 32px;
+  background:linear-gradient(135deg,var(--bg2),var(--bg3));
+  border:1px solid var(--line3);
+  border-radius:50px;
+  position:relative;
+}
+.proposal-marker-inner::before,
+.proposal-marker-inner::after{
+  content:'';
+  width:60px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--line3),var(--line3),transparent);
+}
+.proposal-marker-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold-dk));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  letter-spacing:.04em;
+  line-height:1;
+}
+.proposal-marker-text{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.95rem;
+  letter-spacing:.22em;
+  color:var(--white);
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+/* ═══════════════════════════════════════════
+   PROPOSTA 2 — VERSÃO ENXUTA
+   ═══════════════════════════════════════════ */
+.alt-section{
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201,168,76,.08) 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, #050505 100%);
+  position:relative;
+  padding:80px 0 90px;
+  overflow:hidden;
+}
+.alt-section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:.03;
+  background-image:
+    linear-gradient(rgba(201,168,76,.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,.6) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+.alt-card{
+  background:linear-gradient(160deg,var(--bg2),var(--bg3));
+  border:1px solid var(--line3);
+  border-radius:var(--r-lg);
+  padding:48px 44px;
+  margin-top:36px;
+  position:relative;
+  overflow:hidden;
+}
+.alt-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+/* Bloco de preço da alternativa */
+.alt-price{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+  margin-bottom:36px;
+  padding-bottom:36px;
+  border-bottom:1px solid var(--line);
+}
+.alt-price-info .alt-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.22em;
+  color:var(--gold);
+  text-transform:uppercase;
+  background:var(--gold-soft);
+  padding:6px 16px;
+  border-radius:20px;
+  border:1px solid var(--line3);
+  margin-bottom:14px;
+}
+.alt-price-info h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.8rem,4vw,2.4rem);
+  color:var(--white);
+  letter-spacing:.04em;
+  line-height:1.1;
+  margin-bottom:10px;
+}
+.alt-price-info p{
+  font-size:1.02rem;
+  color:var(--gray-lt);
+  line-height:1.7;
+}
+.alt-price-value{
+  text-align:center;
+  padding:28px 22px;
+  background:rgba(0,0,0,.3);
+  border:1px solid var(--line3);
+  border-radius:var(--r-lg);
+  position:relative;
+}
+.alt-price-value .alt-currency{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.4rem;
+  font-weight:700;
+  color:var(--gold);
+  margin-right:4px;
+  vertical-align:top;
+  position:relative;
+  top:18px;
+}
+.alt-price-value .alt-amount{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.4rem,8vw,5rem);
+  line-height:1;
+  letter-spacing:.02em;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold),var(--gold-dk));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.alt-price-value .alt-period{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--gray-lt);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  display:block;
+  margin-top:4px;
+}
+.alt-price-value .alt-extra{
+  display:inline-block;
+  margin-top:14px;
+  padding:6px 16px;
+  background:var(--gold-soft);
+  border:1px solid var(--line3);
+  border-radius:20px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  color:var(--gold);
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+/* O que está incluído na proposta enxuta */
+.alt-included h4{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;
+  color:var(--white);
+  letter-spacing:.04em;
+  margin-bottom:20px;
+}
+.alt-items{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-bottom:32px;
+}
+.alt-item{
+  display:flex;
+  gap:14px;
+  padding:20px 22px;
+  background:rgba(0,0,0,.3);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  align-items:flex-start;
+  transition:var(--transition);
+}
+.alt-item:hover{border-color:var(--line3);transform:translateX(3px);}
+.alt-item-icon{
+  width:42px;height:42px;
+  min-width:42px;
+  border-radius:10px;
+  background:var(--gold-soft);
+  border:1px solid var(--line3);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);
+  flex-shrink:0;
+}
+.alt-item-icon svg{width:22px;height:22px;}
+.alt-item-text strong{
+  display:block;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.08rem;
+  letter-spacing:.04em;
+  color:var(--white);
+  font-weight:700;
+  margin-bottom:4px;
+}
+.alt-item-text span{
+  font-size:.92rem;
+  color:var(--gray-lt);
+  line-height:1.55;
+}
+
+/* O que NÃO está incluído */
+.alt-excluded{
+  background:rgba(178,34,34,.06);
+  border:1px solid rgba(178,34,34,.25);
+  border-radius:var(--r);
+  padding:22px 26px;
+  margin-top:8px;
+}
+.alt-excluded h5{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.85rem;
+  letter-spacing:.18em;
+  color:#d97070;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.alt-excluded h5::before{
+  content:'';
+  width:24px;height:2px;
+  background:#d97070;
+}
+.alt-excluded ul{
+  list-style:none;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px 18px;
+}
+.alt-excluded ul li{
+  font-size:.92rem;
+  color:var(--gray-lt);
+  padding-left:18px;
+  position:relative;
+  line-height:1.6;
+}
+.alt-excluded ul li::before{
+  content:'×';
+  position:absolute;
+  left:0;
+  color:#d97070;
+  font-weight:700;
+  font-size:1.1rem;
+  line-height:1.4;
+}
+
+/* Comparação entre as duas propostas */
+.compare-proposals{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:36px;
+}
+.compare-prop{
+  background:linear-gradient(160deg,var(--bg2),var(--bg3));
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  padding:30px 28px;
+  position:relative;
+  transition:var(--transition);
+}
+.compare-prop:hover{border-color:var(--line3);transform:translateY(-3px);}
+.compare-prop.highlight{border-color:var(--line3);}
+.compare-prop.highlight::before{
+  content:'Mais completa';
+  position:absolute;
+  top:-12px;
+  right:24px;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold-dk));
+  color:#000;
+  padding:5px 14px;
+  border-radius:20px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.72rem;
+  letter-spacing:.18em;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.compare-prop-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:18px;
+}
+.compare-prop-head h5{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem;
+  color:var(--white);
+  letter-spacing:.04em;
+  line-height:1.1;
+}
+.compare-prop-head .compare-prop-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.72rem;
+  letter-spacing:.18em;
+  color:var(--gold);
+  text-transform:uppercase;
+  font-weight:700;
+  display:block;
+  margin-bottom:4px;
+}
+.compare-prop-price{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold-dk));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+.compare-prop ul{list-style:none;padding:0;}
+.compare-prop ul li{
+  padding:8px 0;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:.95rem;
+  color:var(--gray-lt);
+  line-height:1.5;
+}
+.compare-prop ul li svg{
+  width:16px;height:16px;
+  min-width:16px;
+  margin-top:3px;
+  flex-shrink:0;
+}
+.compare-prop ul li.has{color:var(--white);}
+.compare-prop ul li.has svg{color:var(--gold);}
+.compare-prop ul li.no{opacity:.55;}
+.compare-prop ul li.no svg{color:#666;}
+
+/* ═══════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════ */
 @media (max-width:980px){
@@ -1374,6 +1821,10 @@ a{color:var(--gold);text-decoration:none;}
   .traffic-scenarios{grid-template-columns:1fr;}
   .team-stats{grid-template-columns:1fr;}
   .duration-info-row{grid-template-columns:1fr;}
+  .alt-price{grid-template-columns:1fr;gap:24px;}
+  .alt-items{grid-template-columns:1fr;}
+  .alt-excluded ul{grid-template-columns:1fr;}
+  .compare-proposals{grid-template-columns:1fr;}
 }
 
 @media (max-width:768px){
@@ -1432,6 +1883,21 @@ a{color:var(--gold);text-decoration:none;}
   .donut-center .donut-pct{font-size:3.2rem;}
   .focus-card{padding:32px 26px;}
   .report-card{padding:30px 24px;}
+
+  /* Options bar */
+  .options-bar{padding:28px 24px;}
+
+  /* Proposta 2 */
+  .alt-section{padding:60px 0 70px;}
+  .alt-card{padding:36px 26px;}
+  .alt-price{padding-bottom:28px;margin-bottom:28px;}
+  .alt-price-value{padding:24px 18px;}
+  .compare-prop{padding:26px 22px;}
+  .compare-prop-head{flex-direction:column;gap:8px;}
+  .compare-prop-price{align-self:flex-start;}
+  .proposal-marker-inner::before,
+  .proposal-marker-inner::after{width:30px;}
+  .proposal-marker-inner{padding:12px 22px;}
 }
 
 @media (max-width:480px){
@@ -1459,6 +1925,17 @@ a{color:var(--gold);text-decoration:none;}
   .duration-points .point-label{font-size:.72rem;}
 
   .footer-links{gap:14px;}
+
+  /* Proposta 2 — telas muito pequenas */
+  .alt-card{padding:32px 22px;}
+  .alt-price-value .alt-amount{font-size:clamp(3rem,12vw,4rem);}
+  .alt-item{padding:18px 18px;}
+  .compare-prop.highlight::before{font-size:.65rem;padding:4px 12px;right:18px;}
+  .options-buttons{flex-direction:column;width:100%;}
+  .options-btn{width:100%;justify-content:center;}
+  .proposal-marker-inner{padding:10px 20px;flex-direction:column;gap:4px;}
+  .proposal-marker-inner::before,
+  .proposal-marker-inner::after{display:none;}
 }
 </style>
 </head>
@@ -1504,15 +1981,42 @@ a{color:var(--gold);text-decoration:none;}
     <div class="hero-divider"></div>
 
     <p class="hero-description">
-      Crescimento estruturado para a Combat Tático com gestão de redes sociais, tráfego pago, captação de leads, identidade visual e apoio aos cursos de IAT e Armeiro.
+      Crescimento estruturado para a Combat Tático com gestão de redes sociais, tráfego pago, captação de leads, identidade visual e apoio aos cursos de IAT e Armeiro. Apresento abaixo <strong style="color:var(--white);">duas opções de parceria</strong> para escolher conforme o momento da Combat Tático.
     </p>
 
-    <a href="#proposta" class="hero-cta">
-      Conhecer a proposta
+    <a href="#opcoes" class="hero-cta">
+      Ver as propostas
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
     </a>
   </div>
 </section>
+
+<!-- ═══════ SELETOR DE PROPOSTAS ═══════ -->
+<section class="main-container" id="opcoes">
+  <div class="options-bar reveal">
+    <div class="options-eyebrow">Duas opções de parceria</div>
+    <h3>Escolha o formato que faz mais sentido para o momento</h3>
+    <p>A <strong style="color:var(--white);">Proposta 1</strong> é completa, com gestão integral de marketing, redes sociais, atendimento, artes e apoio aos cursos. A <strong style="color:var(--white);">Proposta 2</strong> é uma versão enxuta, focada apenas em tráfego pago e artes para anúncios. Ambas estão detalhadas abaixo.</p>
+    <div class="options-buttons">
+      <a href="#proposta-1" class="options-btn primary">
+        Proposta 1 — Completa
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#proposta-2" class="options-btn secondary">
+        Proposta 2 — Tráfego Pago
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MARCADOR DA PROPOSTA 1 ═══════ -->
+<div class="proposal-marker reveal" id="proposta-1">
+  <div class="proposal-marker-inner">
+    <span class="proposal-marker-num">01</span>
+    <span class="proposal-marker-text">Proposta Completa</span>
+  </div>
+</div>
 
 <!-- ═══════ APRESENTAÇÃO — RESUMO EXECUTIVO ═══════ -->
 <section class="section-block" id="apresentacao">
@@ -2111,11 +2615,169 @@ a{color:var(--gold);text-decoration:none;}
   </div>
 </section>
 
+<!-- ═══════ MARCADOR DA PROPOSTA 2 ═══════ -->
+<div class="proposal-marker reveal" id="proposta-2" style="margin-top:60px;">
+  <div class="proposal-marker-inner">
+    <span class="proposal-marker-num">02</span>
+    <span class="proposal-marker-text">Proposta Enxuta · Tráfego Pago</span>
+  </div>
+</div>
+
+<!-- ═══════ PROPOSTA 2 — TRÁFEGO PAGO + ARTES ═══════ -->
+<section class="alt-section">
+  <div class="main-container">
+    <div class="reveal">
+      <span class="section-label">Alternativa Simplificada</span>
+      <h2 class="section-title">Apenas tráfego pago e artes para anúncios</h2>
+      <p class="section-subtitle">Para o caso de a Combat Tático preferir um formato mais enxuto, com foco exclusivo em campanhas de mídia paga e nas artes necessárias para os anúncios — sem gestão de redes, atendimento ou apoio aos cursos.</p>
+    </div>
+
+    <div class="alt-card reveal reveal-d1">
+
+      <!-- Bloco de preço -->
+      <div class="alt-price">
+        <div class="alt-price-info">
+          <span class="alt-tag">Proposta 2</span>
+          <h3>Operação focada em mídia paga</h3>
+          <p>Ideal se a Combat Tático já cuida das redes sociais, do atendimento e da operação interna, mas precisa de alguém para profissionalizar o tráfego pago e produzir as artes específicas dos anúncios.</p>
+        </div>
+
+        <div class="alt-price-value">
+          <div>
+            <span class="alt-currency">R$</span><span class="alt-amount">800</span>
+          </div>
+          <span class="alt-period">/ mês</span>
+          <span class="alt-extra">Valor fixo até dezembro 2026</span>
+        </div>
+      </div>
+
+      <!-- O que está incluído -->
+      <div class="alt-included">
+        <h4>O que está incluído nesta proposta</h4>
+
+        <div class="alt-items">
+          <div class="alt-item">
+            <div class="alt-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </div>
+            <div class="alt-item-text">
+              <strong>Gestão de Tráfego Pago</strong>
+              <span>Criação, configuração e otimização contínua de campanhas em Meta Ads (Instagram e Facebook) e Google Ads.</span>
+            </div>
+          </div>
+
+          <div class="alt-item">
+            <div class="alt-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <div class="alt-item-text">
+              <strong>Segmentação Estratégica</strong>
+              <span>Definição de público-alvo, interesses, comportamento e localização para alcançar quem realmente importa.</span>
+            </div>
+          </div>
+
+          <div class="alt-item">
+            <div class="alt-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            </div>
+            <div class="alt-item-text">
+              <strong>Artes para Anúncios</strong>
+              <span>Criação das peças gráficas exclusivamente para uso nos anúncios — banners, criativos estáticos e variações para teste.</span>
+            </div>
+          </div>
+
+          <div class="alt-item">
+            <div class="alt-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+            </div>
+            <div class="alt-item-text">
+              <strong>Relatório Mensal Simplificado</strong>
+              <span>Indicadores principais das campanhas: alcance, custo por lead, retorno e desempenho dos criativos.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- O que não está incluído -->
+        <div class="alt-excluded">
+          <h5>O que não está incluído nesta proposta</h5>
+          <ul>
+            <li>Gestão completa do Instagram (postagens, stories, planejamento editorial)</li>
+            <li>Atendimento de comentários, DMs e WhatsApp</li>
+            <li>Artes para feed, stories ou conteúdo orgânico</li>
+            <li>Prospecção de influenciadores e modelos</li>
+            <li>Identidade visual da loja</li>
+            <li>Apoio às aulas presenciais ou modernização da metodologia</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lembrete sobre tráfego -->
+      <div class="price-validity" style="margin-top:32px;">
+        <strong>Importante.</strong> Assim como na Proposta 1, o valor de R$ 800 cobre apenas a operação. O <strong>investimento em mídia paga</strong> nas plataformas (Meta, Google) continua sendo pago diretamente pela Combat Tático às plataformas — quanto maior o investimento, maior o alcance.
+      </div>
+    </div>
+
+    <!-- Comparativo lado a lado -->
+    <div class="reveal" style="margin-top:50px;">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--white);letter-spacing:.04em;text-align:center;margin-bottom:8px;">Comparativo rápido entre as duas propostas</h3>
+      <p style="text-align:center;color:var(--gray-lt);font-size:1rem;line-height:1.7;max-width:640px;margin:0 auto;">Para facilitar a decisão, segue a comparação lado a lado de tudo que cada formato entrega.</p>
+    </div>
+
+    <div class="compare-proposals">
+
+      <!-- PROPOSTA 1 -->
+      <div class="compare-prop highlight reveal reveal-d1">
+        <div class="compare-prop-head">
+          <div>
+            <span class="compare-prop-tag">Proposta 1</span>
+            <h5>Parceria Completa</h5>
+          </div>
+          <span class="compare-prop-price">R$ 1.700/mês</span>
+        </div>
+        <ul>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Tráfego pago — gestão profissional</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Artes para anúncios</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Gestão completa do Instagram</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Atendimento online (8h–23h)</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Artes para feed e stories</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Influenciadores e modelos</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Identidade visual da loja</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Apoio aos cursos e metodologia</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Relatório mensal completo</li>
+        </ul>
+      </div>
+
+      <!-- PROPOSTA 2 -->
+      <div class="compare-prop reveal reveal-d2">
+        <div class="compare-prop-head">
+          <div>
+            <span class="compare-prop-tag">Proposta 2</span>
+            <h5>Apenas Tráfego Pago</h5>
+          </div>
+          <span class="compare-prop-price">R$ 800/mês</span>
+        </div>
+        <ul>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Tráfego pago — gestão profissional</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Artes para anúncios</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Gestão completa do Instagram</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Atendimento online (8h–23h)</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Artes para feed e stories</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Influenciadores e modelos</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Identidade visual da loja</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>Apoio aos cursos e metodologia</li>
+          <li class="has"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Relatório mensal simplificado</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ CTA FINAL ═══════ -->
 <section class="main-container">
   <div class="cta-section reveal">
     <h2>Vamos começar</h2>
-    <p>Tudo está alinhado. Basta um sinal verde para iniciarmos a operação ainda este mês.</p>
+    <p>Tudo está alinhado. Basta um sinal verde indicando qual das duas propostas faz mais sentido para iniciarmos a operação ainda este mês.</p>
 
     <div class="cta-wa-wrap">
       <a href="https://wa.me/" class="cta-button-wa" target="_blank" rel="noopener">
