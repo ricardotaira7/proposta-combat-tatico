@@ -1366,6 +1366,85 @@ a{color:var(--gold);text-decoration:none;}
 .reveal-d4{transition-delay:.32s;}
 
 /* ═══════════════════════════════════════════
+   BOTÃO FLUTUANTE — VOLTAR AO TOPO
+   ═══════════════════════════════════════════ */
+.back-to-top{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold),var(--gold-dk));
+  color:#000;
+  border:1px solid rgba(232,201,106,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,.5), 0 0 18px rgba(201,168,76,.35);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(16px) scale(.9);
+  transition:opacity .35s ease, visibility .35s ease, transform .35s cubic-bezier(.25,.8,.25,1), box-shadow .3s ease, background .3s ease;
+  z-index:200;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  padding:0;
+}
+.back-to-top.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0) scale(1);
+}
+.back-to-top:hover{
+  transform:translateY(-4px) scale(1.06);
+  box-shadow:0 14px 30px rgba(0,0,0,.55), 0 0 26px rgba(201,168,76,.6);
+}
+.back-to-top:active{
+  transform:translateY(-2px) scale(1);
+}
+.back-to-top svg{
+  width:22px;
+  height:22px;
+  stroke-width:2.6;
+  transition:transform .3s ease;
+}
+.back-to-top:hover svg{
+  transform:translateY(-2px);
+}
+.back-to-top::before{
+  content:'';
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  border:1px solid rgba(201,168,76,.25);
+  pointer-events:none;
+  animation:btt-pulse 2.4s ease-in-out infinite;
+}
+@keyframes btt-pulse{
+  0%,100%{transform:scale(1);opacity:.6;}
+  50%{transform:scale(1.18);opacity:0;}
+}
+@media (max-width:768px){
+  .back-to-top{
+    width:48px;
+    height:48px;
+    bottom:18px;
+    right:18px;
+  }
+  .back-to-top svg{width:20px;height:20px;}
+}
+@media (max-width:480px){
+  .back-to-top{
+    width:46px;
+    height:46px;
+    bottom:16px;
+    right:16px;
+  }
+}
+
+/* ═══════════════════════════════════════════
    SELETOR DE PROPOSTAS (logo após hero)
    ═══════════════════════════════════════════ */
 .options-bar{
@@ -2585,7 +2664,53 @@ a{color:var(--gold);text-decoration:none;}
   </div>
 </footer>
 
+<!-- ═══════ BOTÃO VOLTAR AO TOPO ═══════ -->
+<button id="backToTop" class="back-to-top" aria-label="Voltar ao topo" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
 <script>
+/* ═══════════════════════════════════════════
+   BOTÃO VOLTAR AO TOPO
+   ═══════════════════════════════════════════ */
+const backToTopBtn = document.getElementById('backToTop');
+
+if (backToTopBtn) {
+  // Aparece após rolar 400px da página
+  const toggleBackToTop = () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  };
+
+  // Throttle simples com requestAnimationFrame para performance
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        toggleBackToTop();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Verifica estado inicial (caso a página carregue rolada)
+  toggleBackToTop();
+
+  // Scroll suave ao topo ao clicar
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
 /* ═══════════════════════════════════════════
    SCROLL REVEAL OBSERVER
    ═══════════════════════════════════════════ */
